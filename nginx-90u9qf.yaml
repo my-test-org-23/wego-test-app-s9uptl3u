@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-90u9qf
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-90u9qf
+  namespace: my-nginx-90u9qf
+  labels:
+    name: nginx-90u9qf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-90u9qf
+  template:
+    metadata:
+      namespace: my-nginx-90u9qf
+      labels:
+        name: nginx-90u9qf
+    spec:
+      containers:
+      - name: nginx-90u9qf
+        image: nginx
+        ports:
+        - containerPort: 80
+
